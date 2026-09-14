@@ -1,6 +1,4 @@
-<p align="center"><img src="docs/images/sightquill-logo.png" alt="Sightquill logo" width="96" height="96"></p>
-
-# Sightquill
+<h1><img src="docs/images/sightquill-logo.png" alt="" width="48" height="48" align="absmiddle"> Sightquill</h1>
 
 A native Windows crosshair overlay with 24 presets, transparent PNG and game-code imports, and an optional How to Fish companion. English interface. No account or telemetry.
 
@@ -9,6 +7,15 @@ A native Windows crosshair overlay with 24 presets, transparent PNG and game-cod
 Download **Sightquill-Setup-0.6.1-win-x64.exe** from [Releases](https://github.com/snitnil-dcflw/Sightquill/releases/latest). Run it, choose an installation folder and optionally create a desktop shortcut. Installation is per user and does not require administrator privileges. The .NET runtime is included.
 
 A portable ZIP is also available: extract the complete archive and launch Sightquill.exe. SHA-256 checksums accompany each release. This release is not code-signed; Windows may show an unknown-publisher or SmartScreen prompt.
+
+## VirusTotal checks
+
+Look up the exact 0.6.1 release files by their SHA-256 fingerprints:
+
+- [Windows installer — VirusTotal lookup](https://www.virustotal.com/gui/file/696f3657900192a8528c826eb81938749beb0f070a8345c12b3f8d546a5173bc)
+- [Portable ZIP — VirusTotal lookup](https://www.virustotal.com/gui/file/f1b76dc8e32d264ca2e1d9a5b9bb2437b77d957733a0ce3c3d24e77c51dea340)
+
+**Status: scan results have not been verified by the project.** These are file lookups, not a clean-scan badge. If VirusTotal has no report, upload the matching file from [Releases](https://github.com/snitnil-dcflw/Sightquill/releases/tag/v0.6.1) for analysis. Compare its hash with the release SHA256SUMS file. Antivirus results do not guarantee that a file is safe.
 
 ## Screenshots
 
