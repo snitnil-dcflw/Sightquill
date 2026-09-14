@@ -149,9 +149,53 @@ internal static class Program
                 var bitmap = new RenderTargetBitmap(160, 160, 96, 96, PixelFormats.Pbgra32); bitmap.Render(aligned);
                 var pixels = new byte[160 * 160 * 4]; bitmap.CopyPixels(pixels, 640, 0);
                 var symmetric = true;
-                for (var y = 0; y < 159; y++) for (var x = 0; x < 159; x++)
-                    symmetric &= pixels[(y * 160 + x) * 4 + 3] == pixels[(y * 160 + 158 - x) * 4 + 3] && pixels[(y * 160 + x) * 4 + 3] == pixels[((158 - y) * 160 + x) * 4 + 3];
-                Check(symmetric, $"Native Snowflake follows the builder pixel center at motion {movement}");
+                for (var y = 0; y < 160; y++) for (var x = 0; x < 160; x++)
+                    symmetric &= pixels[(y * 160 + x) * 4 + 3] == pixels[(y * 160 + 159 - x) * 4 + 3] && pixels[(y * 160 + x) * 4 + 3] == pixels[((159 - y) * 160 + x) * 4 + 3];
+                Check(symmetric, $"Odd-width Snowflake stays at the preview center at motion {movement}");
+            }
+            foreach (var thickness in new[] { 1, 2, 3, 4 })
+            foreach (var sizeScale in new[] { 1d, 2d })
+            {
+                var mixed = GameCrosshairImport.Read($"0;P;h;0;d;1;z;1;f;0;0t;{thickness};0l;5;0o;4;0a;1;0f;0;0m;0;1t;2;1l;3;1o;16;1a;1;1f;0;1m;0").Reticle;
+                mixed.Size = mixed.Artwork!.ReferenceSize * sizeScale; mixed.Dynamic = false;
+                var view = new ReticleView { Settings = mixed, Width = 160, Height = 160 };
+                view.Measure(new Size(160, 160)); view.Arrange(new Rect(0, 0, 160, 160));
+                var bitmap = new RenderTargetBitmap(160, 160, 96, 96, PixelFormats.Pbgra32); bitmap.Render(view);
+                var frame = new byte[160 * 160 * 4]; bitmap.CopyPixels(frame, 640, 0);
+                var centered = true;
+                for (var y = 0; y < 160; y++) for (var x = 0; x < 160; x++)
+                    centered &= frame[(y * 160 + x) * 4 + 3] == frame[(y * 160 + 159 - x) * 4 + 3]
+                        && frame[(y * 160 + x) * 4 + 3] == frame[((159 - y) * 160 + x) * 4 + 3];
+                Check(centered, $"Mixed Valorant layers and odd dot share the canvas center: thickness {thickness}, scale {sizeScale}");
+            }
+            var reportedCodes = new[] {
+                "0;c;1;s;1;P;t;4;o;1;d;1;z;5;a;0.556;0t;10;0l;20;0v;0;0g;1;0o;13;0a;1;0f;0;1t;1;1l;1;1v;0;1g;1;1o;14;1a;1;1s;0.064;1e;0.375;S;c;3;s;0.628;o;1",
+                "0;c;1;P;c;8;u;E279AFFF;o;0.113;d;1;b;1;z;1;f;0;m;1;0t;3;0l;3;0v;13;0g;1;0a;0.729;0e;0.1;1t;7;1l;3;1v;10;1g;1;1o;2;1a;0.71;1m;0;1e;0.1"
+            };
+            for (var codeIndex = 0; codeIndex < reportedCodes.Length; codeIndex++)
+            foreach (var scale in new[] { 1d, 2d })
+            foreach (var motion in new[] { (0d, 0d), (.37, .42), (1d, 1d) })
+            {
+                var reported = GameCrosshairImport.Read(reportedCodes[codeIndex]).Reticle;
+                reported.Size = reported.Artwork!.ReferenceSize * scale;
+                var view = new ReticleView { Settings = reported, Width = 320, Height = 320 };
+                view.Measure(new Size(320, 320)); view.Arrange(new Rect(0, 0, 320, 320));
+                view.SetMotion(motion.Item1, motion.Item2);
+                var bitmap = new RenderTargetBitmap(320, 320, 96, 96, PixelFormats.Pbgra32); bitmap.Render(view);
+                var frame = new byte[320 * 320 * 4]; bitmap.CopyPixels(frame, 1280, 0);
+                var maxDifference = 0;
+                for (var y = 0; y < 320; y++) for (var x = 0; x < 320; x++) for (var channel = 0; channel < 4; channel++)
+                {
+                    var value = frame[(y * 320 + x) * 4 + channel];
+                    maxDifference = Math.Max(maxDifference, Math.Abs(value - frame[(y * 320 + 319 - x) * 4 + channel]));
+                    maxDifference = Math.Max(maxDifference, Math.Abs(value - frame[((319 - y) * 320 + x) * 4 + channel]));
+                }
+                Check(maxDifference <= 1, $"Reported Valorant code {codeIndex + 1}: centered RGBA at scale {scale}, motion {motion}, max difference {maxDifference}");
+                if (motion == (0d, 0d) && scale == 2)
+                {
+                    var encoder = new PngBitmapEncoder(); encoder.Frames.Add(BitmapFrame.Create(bitmap));
+                    using var renderedFile = File.Create(Path.Combine("artifacts", $"valorant-reported-{codeIndex + 1}.png")); encoder.Save(renderedFile);
+                }
             }
             var layeredSettings = GameCrosshairImport.Read("0;P;h;0;d;1;f;1;0a;1;0t;2;0l;4;0o;10;0m;0;0f;1;0e;0.5;1a;1;1t;2;1l;3;1o;25;1m;1;1s;2;1f;0").Reticle;
             var layeredView = new ReticleView { Settings = layeredSettings, Width = 160, Height = 160 };

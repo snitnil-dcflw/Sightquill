@@ -80,9 +80,22 @@ public sealed class ReticleView : FrameworkElement
         dc.PushTransform(new ScaleTransform(ratio, ratio));
         var color = new SolidColorBrush((Color)ColorConverter.ConvertFromString(settings.Color));
         var motionScale = FitThumbnail ? 1 : ResolutionScale;
-        var animatedMarks = art.Marks.ConvertAll(mark => settings.Dynamic
-            ? mark.AtMotion(movement * settings.MovementSpread * motionScale, firing * settings.FiringSpread * motionScale, firing, ratio)
-            : mark);
+        var animatedMarks = art.Marks.ConvertAll(mark =>
+        {
+            // Version 2 stores Valorant's integer pixel coordinates: odd layers
+            // (including the dot) have their center at (-.5, -.5), even ones at (0, 0).
+            // Align each layer before scaling/animation, including saved imports.
+            // Do not recenter visible bounds: firing fade intentionally removes the top arm.
+            if (art.Source == "Valorant" && art.GeometryVersion == 2)
+            {
+                var thickness = mark.AxisX != 0 ? mark.Height : mark.Width;
+                var offset = (thickness % 2) / 2;
+                mark = mark with { X = mark.X + offset, Y = mark.Y + offset };
+            }
+            return settings.Dynamic
+                ? mark.AtMotion(movement * settings.MovementSpread * motionScale, firing * settings.FiringSpread * motionScale, firing, ratio)
+                : mark;
+        });
         // Keep source order: later outlines separate overlapping inner/outer arms.
         foreach (var mark in animatedMarks)
         {
