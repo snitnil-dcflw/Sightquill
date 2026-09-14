@@ -1,0 +1,29 @@
+name: Windows build
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+      - name: Build app
+        shell: pwsh
+        run: ./build.ps1
+      - name: Model tests
+        shell: pwsh
+        run: dotnet run --project tests/Sightquill.Tests -c Release
+      - name: Portable Universal package
+        shell: pwsh
+        run: ./publish.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Sightquill-Universal-win-x64
+          path: artifacts/Sightquill-*-win-x64.zip

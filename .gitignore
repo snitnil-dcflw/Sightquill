@@ -1,0 +1,22 @@
+.tools/
+**/bin/
+**/obj/
+artifacts/
+*.user
+.vs/
+.env
+.env.*
+!.env.example
+*.pfx
+*.p12
+*.pem
+*.key
+*.log
+settings.json
+.codex/
+.agents/
+*_wpftmp.csproj
+# Local investigation notes; public user/developer guides are tracked explicitly.
+docs/superpowers/
+docs/*verification*.md
+docs/how-to-fish-investigation.md
