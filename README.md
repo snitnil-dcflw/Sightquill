@@ -1,3 +1,5 @@
+<p align="center"><img src="docs/images/sightquill-logo.png" alt="Sightquill logo" width="96" height="96"></p>
+
 # Sightquill
 
 A native Windows crosshair overlay with 24 presets, transparent PNG and game-code imports, and an optional How to Fish companion. English interface. No account or telemetry.
@@ -7,6 +9,25 @@ A native Windows crosshair overlay with 24 presets, transparent PNG and game-cod
 Download **Sightquill-Setup-0.6.1-win-x64.exe** from [Releases](https://github.com/snitnil-dcflw/Sightquill/releases/latest). Run it, choose an installation folder and optionally create a desktop shortcut. Installation is per user and does not require administrator privileges. The .NET runtime is included.
 
 A portable ZIP is also available: extract the complete archive and launch Sightquill.exe. SHA-256 checksums accompany each release. This release is not code-signed; Windows may show an unknown-publisher or SmartScreen prompt.
+
+## Screenshots
+
+The studio brings the preset library, live preview and crosshair controls together.
+
+![Sightquill studio with the crosshair library, live preview and customization controls](docs/images/sightquill-studio.png)
+
+<details>
+<summary>Color wheel and crosshair imports</summary>
+
+Choose a custom color with the wheel and brightness control.
+
+![Sightquill color wheel and brightness control](docs/images/sightquill-color-wheel.png)
+
+Import transparent PNGs, Sightquill JSON profiles, or Valorant / Counter-Strike codes, and preview the result before adding it.
+
+![Crosshair import dialog showing a Valorant code and its preview](docs/images/sightquill-import.png)
+
+</details>
 
 ## Use
 
