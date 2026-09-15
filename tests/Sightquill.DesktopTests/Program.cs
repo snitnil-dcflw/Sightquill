@@ -58,6 +58,21 @@ internal static class Program
                 publisher.Publish(new AimFrame(Environment.ProcessId, sequence, DateTime.UtcNow.Ticks, .4f, .6f, AimKind.Barrel));
             Check(SpinWait.SpinUntil(() => receiver.Latest?.Sequence == 1000, 3000), "Idle companion wakes and a burst converges to the newest aim sample");
         }
+        var lateName = "Sightquill.LateStart." + Guid.NewGuid().ToString("N");
+        using (var publisher = new Sightquill.HowToFish.AimPublisher(lateName))
+        {
+            publisher.Publish(new AimFrame(Environment.ProcessId, 1, DateTime.UtcNow.Ticks, .5f, .5f, AimKind.Camera));
+            // Let a connection attempt time out before the desktop app exists.
+            Thread.Sleep(1100);
+            using (var lateReceiver = new AimReceiver(lateName))
+                Check(SpinWait.SpinUntil(() => lateReceiver.Latest?.Sequence == 1, 4000), "Starting Sightquill after the companion connects without restarting the game");
+            using var restartedReceiver = new AimReceiver(lateName);
+            long lateSequence = 1;
+            Check(SpinWait.SpinUntil(() => {
+                publisher.Publish(new AimFrame(Environment.ProcessId, ++lateSequence, DateTime.UtcNow.Ticks, .4f, .6f, AimKind.Barrel));
+                return restartedReceiver.Latest?.Sequence > 1;
+            }, 4000), "Restarting Sightquill reconnects to the same running game companion");
+        }
         using (var overlay = new OverlayController())
         {
             Check(!overlay.IsEnabled && !IsWindowVisible(overlay.WindowHandle), "Startup never enables the overlay");

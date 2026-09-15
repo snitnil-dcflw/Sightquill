@@ -9,6 +9,17 @@
 
 Switch to Universal to stop using game telemetry and return to a screen-centered overlay. New Sightquill installations default to Universal; existing mode preferences are retained. The crosshair always starts disabled.
 
+## Start Sightquill after the game
+
+Once the companion is installed and loaded by the game, either launch order works. You can also close and reopen Sightquill while How to Fish stays running.
+
+1. Start or resume How to Fish.
+2. Open Sightquill and select How to Fish under Game & display.
+3. Click Enable crosshair, or press Ctrl+Alt+X.
+4. Return to the game. The crosshair hides while the editor or a game menu has focus, and returns during gameplay.
+
+The companion retries its connection automatically. Activation is separate from the connection: Sightquill starts with the crosshair off, even if the game is already running. First-time companion installation or a disabled loader requires restarting the game; starting the desktop app cannot load a missing companion into an existing game process.
+
 ## Installation and removal
 
 The companion package is beside Sightquill.exe under Integrations/HowToFish. Extract the whole application ZIP before setup.
