@@ -6,9 +6,8 @@
 
 **[Download for Windows](https://github.com/snitnil-dcflw/Sightquill/releases/latest)** · **[How to Fish setup guide](docs/how-to-fish.md)** · **[Report a problem](https://github.com/snitnil-dcflw/Sightquill/issues)**
 
-[![Weapon inspections in How to Fish, recorded with Sightquill](docs/images/how-to-fish-inspections.gif)](https://github.com/snitnil-dcflw/Sightquill/releases/download/v0.6.1/Sightquill-How-to-Fish-weapon-inspections.mp4)
+https://github.com/user-attachments/assets/d3e922c8-7c3a-4528-838d-dec9d73eb84b
 
-**[Watch or download the 1080p video](https://github.com/snitnil-dcflw/Sightquill/releases/download/v0.6.1/Sightquill-How-to-Fish-weapon-inspections.mp4)** — 19 seconds of weapon inspections from gameplay recorded with OBS. Silent edit; the animated preview is reduced in size. Weapons, skins and inspection animations belong to How to Fish; Sightquill provides the crosshair overlay.
 
 ### Made for your How to Fish setup
 
