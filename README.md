@@ -6,7 +6,9 @@
 
 **[Download for Windows](https://github.com/snitnil-dcflw/Sightquill/releases/latest)** · **[How to Fish setup guide](docs/how-to-fish.md)** · **[Report a problem](https://github.com/snitnil-dcflw/Sightquill/issues)**
 
-![Sightquill crosshair overlay in How to Fish with a scoped weapon equipped](docs/images/how-to-fish-crosshair.png)
+[![Weapon inspections in How to Fish, recorded with Sightquill](docs/images/how-to-fish-inspections.gif)](https://github.com/snitnil-dcflw/Sightquill/releases/download/v0.6.1/Sightquill-How-to-Fish-weapon-inspections.mp4)
+
+**[Watch or download the 1080p video](https://github.com/snitnil-dcflw/Sightquill/releases/download/v0.6.1/Sightquill-How-to-Fish-weapon-inspections.mp4)** — 19 seconds of weapon inspections from gameplay recorded with OBS. Silent edit; the animated preview is reduced in size. Weapons, skins and inspection animations belong to How to Fish; Sightquill provides the crosshair overlay.
 
 ### Made for your How to Fish setup
 
@@ -16,7 +18,7 @@
 - **Toggle whenever you want:** Ctrl+Alt+X enables or hides the overlay. After companion setup, you can start Sightquill before or after the game.
 - **Tune it for your screen:** fixed physical pixels or resolution scaling, with 1080p and 4K rendering tests.
 
-No account, subscription or telemetry. Sightquill draws the crosshair; it does not aim for you or automate shots. Weapon tracking does not predict random spread or bullet drop. The gameplay image shows the overlay, not a guarantee of where every shot lands.
+No account, subscription or telemetry. Sightquill draws the crosshair; it does not aim for you or automate shots. Weapon tracking does not predict random spread or bullet drop. The gameplay footage shows the overlay, not a guarantee of where every shot lands.
 
 ## Install
 
