@@ -1,12 +1,37 @@
 <h1><img src="docs/images/sightquill-logo.png" alt="" width="48" height="48" align="absmiddle"> Sightquill</h1>
 
-A native Windows crosshair overlay with 24 presets, transparent PNG and game-code imports, and an optional How to Fish companion. English interface. No account or telemetry.
+## A customizable crosshair for How to Fish
+
+**Give How to Fish a crosshair that fits your play style.** Sightquill is a free, open-source Windows app with adjustable crosshairs and an optional companion that follows the game's weapon aim. Also works as a universal screen-centered overlay for other games.
+
+**[Download for Windows](https://github.com/snitnil-dcflw/Sightquill/releases/latest)** · **[How to Fish setup guide](docs/how-to-fish.md)** · **[Report a problem](https://github.com/snitnil-dcflw/Sightquill/issues)**
+
+![Sightquill crosshair overlay in How to Fish with a scoped weapon equipped](docs/images/how-to-fish-crosshair.png)
+
+### Made for your How to Fish setup
+
+- **Follow weapon aim:** the optional companion positions the crosshair using the weapon's nominal aim direction as it moves.
+- **Choose your look:** 24 presets, small dots, rings and cross shapes; adjust size, color, opacity and outlines.
+- **Bring your crosshair:** import Valorant Primary codes, CS:GO / CS2 codes, transparent PNGs or Sightquill JSON profiles.
+- **Toggle whenever you want:** Ctrl+Alt+X enables or hides the overlay. After companion setup, you can start Sightquill before or after the game.
+- **Tune it for your screen:** fixed physical pixels or resolution scaling, with 1080p and 4K rendering tests.
+
+No account, subscription or telemetry. Sightquill draws the crosshair; it does not aim for you or automate shots. Weapon tracking does not predict random spread or bullet drop. The gameplay image shows the overlay, not a guarantee of where every shot lands.
 
 ## Install
 
 Download **Sightquill-Setup-0.6.1-win-x64.exe** from [Releases](https://github.com/snitnil-dcflw/Sightquill/releases/latest). Run it, choose an installation folder and optionally create a desktop shortcut. Installation is per user and does not require administrator privileges. The .NET runtime is included.
 
 A portable ZIP is also available: extract the complete archive and launch Sightquill.exe. SHA-256 checksums accompany each release. This release is not code-signed; Windows may show an unknown-publisher or SmartScreen prompt.
+
+### Set up your How to Fish crosshair
+
+1. Install Sightquill and choose **How to Fish** under **Game & display**.
+2. Open **Set up**, select your Steam game folder, and install the companion with the game closed.
+3. Launch How to Fish, choose a crosshair, and enable it with **Ctrl+Alt+X**.
+4. Return to gameplay. The marker hides while you are in menus or the game is in the background.
+
+First-time setup installs a local BepInEx companion. After that, either launch order works. Use windowed or borderless fullscreen. See the [complete How to Fish guide](docs/how-to-fish.md) for setup and removal.
 
 ## Screenshots
 
@@ -27,7 +52,7 @@ Import transparent PNGs, Sightquill JSON profiles, or Valorant / Counter-Strike 
 
 </details>
 
-## Use
+## Universal mode and crosshair editing
 
 1. Choose a preset or import a transparent PNG, Sightquill JSON, Valorant Primary code, or CS:GO / CS2 share code.
 2. Adjust color, size, opacity and placement. Save named profiles to keep them.
