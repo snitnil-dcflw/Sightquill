@@ -19,6 +19,12 @@ https://github.com/user-attachments/assets/d3e922c8-7c3a-4528-838d-dec9d73eb84b
 
 No account, subscription or telemetry. Sightquill draws the crosshair; it does not aim for you or automate shots. Weapon tracking does not predict random spread or bullet drop. The gameplay footage shows the overlay, not a guarantee of where every shot lands.
 
+### Dynamic Valorant crosshairs
+
+https://github.com/user-attachments/assets/6cb68a17-6a27-4bc3-9227-b83ca807dcb4
+
+https://github.com/user-attachments/assets/fcc41dc5-04e2-4bdf-8a4e-3d5133de4671
+
 ## Install
 
 Download **Sightquill-Setup-0.6.1-win-x64.exe** from [Releases](https://github.com/snitnil-dcflw/Sightquill/releases/latest). Run it, choose an installation folder and optionally create a desktop shortcut. Installation is per user and does not require administrator privileges. The .NET runtime is included.
